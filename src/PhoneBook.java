@@ -1,22 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
-public class PhoneDirectory {
-    private HashMap<String, ArrayList<String>> phoneBook;
+public class PhoneBook {
 
-    // Конструктор
-    public PhoneDirectory() {
-        phoneBook = new HashMap<String, ArrayList<String>>();
+    private Map<String, List<String>> phoneBook;
+
+    public PhoneBook() {
+        this.phoneBook = new HashMap<>();
     }
 
-    // Добавить запись
-    public void add(String name, String number) {
-        phoneBook.put(name, number);
+    public void add(String surname, String number) {
+        if (!phoneBook.containsKey(surname)) {
+            phoneBook.put(surname, new ArrayList<>());
+        }
+        phoneBook.get(surname).add(number);
     }
 
-    // Получить запись
-    public int get(String name) {
-        return phoneBook.get(name);
+    public List<String> get(String surname) {
+        return phoneBook.get(surname);
     }
+
 }
-
